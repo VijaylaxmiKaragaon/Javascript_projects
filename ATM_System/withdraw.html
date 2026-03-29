@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Withdraw Money</h2>
+    <input type="number" name="" id="amount" placeholder="Enter amount">
+    <button onclick="withdraw()">Withdraw</button>
+    <a href="index.html"><button>Back</button></a>
+
+    <script>
+        function withdraw() {
+            let balance = Number(localStorage.getItem("balance")) || 5000;
+            let amt =  Number(document.getElementById("amount").value);
+
+              if(isNaN(amt) || amt <= 0 ){
+                alert("Enter valid amount");
+              } else if(amt > balance) {
+                alert("Insufficient balance")
+
+              } else {
+                balance -= amt ;
+            localStorage.setItem("balance",balance);
+        alert("Withdraw successful");
+                  }
+        }
+    </script>
+</body>
+</html>
